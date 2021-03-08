@@ -8,10 +8,13 @@
 [Bootstrap](https://v3.bootcss.com/getting-started/)
 [Github OAuth](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
 [Spring](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)
+[Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-attribute-values)
 
 ##工具
 [Git](https://git-scm.com/download)
 [Visual Paradigm](https://www.visual-paradigm.com) 
+[flyway](https://flywaydb.org/documentation/getstarted/firststeps/maven)
+[Lombok](https://projectlombok.org/)
 
 #脚本
 ```sql
