@@ -53,3 +53,8 @@ comment on column comment.like_count is '点赞数';
 mvn flyway:migrate
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```
+{
+  "parentId":1,
+  "content":"这是第2个回复内容",
+  "type":1
+}
