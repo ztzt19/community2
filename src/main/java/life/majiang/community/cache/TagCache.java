@@ -19,7 +19,9 @@ public class TagCache {
 
         TagDTO frontEnd = new TagDTO();
         frontEnd.setCategoryName("前端");
-        frontEnd.setTags(Arrays.asList("javascript","前端","vue.js","css","html","html5","node.js","react.js","jquery","css3","es6"));
+        frontEnd.setTags(Arrays.asList("javascript","前端","vue.js","css","html","html5","node.js","react.js","jquery","css3","es6",
+                "typescript","chrome","npm","bootstrap","sass","less","chrome-devtools","angular","firefox","coffeescript","safari",
+                "postman","postcss","fiddler","yarn","webkit","firebug","edge"));
         tagDTOS.add(frontEnd);
 
         TagDTO backEnd = new TagDTO();
