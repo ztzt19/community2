@@ -18,7 +18,7 @@ import java.util.List;
  * @create 2021-03-08 23:07
  */
 @Controller
-public class QuestionController {
+public class    QuestionController {
     @Autowired
     private QuestionService questionService;
 

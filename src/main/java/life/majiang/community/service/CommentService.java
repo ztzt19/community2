@@ -67,7 +67,7 @@ public class CommentService {
             //增加评论数
             Comment parentComment = new Comment();
             parentComment.setId(comment.getParentId());
-            comment.setCommentCount(1);
+            parentComment.setCommentCount(1);
             commentExtMapper.incCommentCount(parentComment);
                 //创建通知  (拿到问题 传进去一个创建者， 通知的人是谁，                         文章标题，         类型：回复问题or回复评论，                   回复的id)
             createNotify(comment, dbComment.getCommentator(), commentator.getName(), question.getTitle(), NotificationTypeEnum.REPLY_COMMENT, question.getId());
@@ -77,6 +77,7 @@ public class CommentService {
             if (question == null){
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
+            comment.setCommentCount(0);
             commentMapper.insert(comment);
             question.setCommentCount(1);
             questionExtMapper.incCommentCount(question);
@@ -87,6 +88,10 @@ public class CommentService {
 
     //创建通知
     private void createNotify(Comment comment, Long receiver, String notifierName, String outerTitle, NotificationTypeEnum notificationType, Long outerId) {
+        //接收通知和触发通知的是同一个人（自己不给自己通知）
+        if (receiver == comment.getCommentator()){
+            return;
+        }
         Notification notification = new Notification();
         notification.setGmtCreate(System.currentTimeMillis());
         notification.setNotifier(comment.getCommentator());
