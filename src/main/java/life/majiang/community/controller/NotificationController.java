@@ -36,7 +36,7 @@ public class NotificationController {
             || NotificationTypeEnum.REPLY_QUESTOIN.getType() == notificationDTO.getType()){
             return "redirect:/question/" + notificationDTO.getOuterid();
         }else {
-            return "redrect:/";
+            return "redirect:/";
         }
     }
 }

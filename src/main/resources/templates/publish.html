@@ -58,7 +58,7 @@
                            placeholder="输入标签，以,分隔"
                            onclick="showSelectTag()">
                     <div id="select-tag" class="publish-tag-tab">
-                        <!-- Nav tabs -->
+                        <!-- Nav tabs --Category-->
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" th:each="selectCategory,selectCategoryStat: ${tags}"
                                 th:class="${selectCategoryStat.first? 'active': ''}">
@@ -71,7 +71,7 @@
                             <div role="tabpanel" th:id="${selectCategory.categoryName}"
                                  th:each="selectCategory,selectCategoryStat:${tags}"
                                  th:class="${selectCategoryStat.first? 'active tab-pane': 'tab-pane'}">
-                                    <span class="label label-info" th:each="selectTag:${selectCategory.tags}">
+                                    <span class="label label-info" th:each=" selectTag:${selectCategory.tags}">
                                         <span class="glyphicon glyphicon-tags" onclick="selectTag(this)"
                                               th:data-tag="${selectTag}"
                                               th:text="${' ' + selectTag}"></span>

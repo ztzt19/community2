@@ -194,6 +194,7 @@ public class QuestionService {
         question.setTag(regexpTag);
 
         List<Question> questions = questionExtMapper.selectRelated(question);
+        //lambda表达式的参数，之所以用e，是因为它代表流里面的每一个元素（element）
         List<QuestionDTO> questionDTOS = questions.stream().map(q -> {
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(q, questionDTO);
