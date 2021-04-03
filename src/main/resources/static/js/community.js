@@ -100,13 +100,14 @@ function collapseComments(e) {
         e.classList.remove("active");
     } else {
         var subCommentContainer = $("#comment-" + id);
+        //最后一个元素（回复的框），！=1，说明我们已经加载过了，之间展示就行
         if (subCommentContainer.children().length != 1) {
             //展开二级评论
             comments.addClass("in");
             //标记二级评论展开状态
             e.setAttribute("data-collapse", "in");
             e.classList.add("active");
-        } else {
+        } else {    //去重新加载。（如果加载过了就不能重新去调用请求了）
             $.getJSON("/comment/" + id, function (data) {
                 // console.log(data);
                 $.each(data.data.reverse(), function (index, comment) {
