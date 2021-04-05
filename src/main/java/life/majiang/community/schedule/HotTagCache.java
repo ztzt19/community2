@@ -15,11 +15,11 @@ import java.util.*;
 @Component  //本身就是一个单例
 @Data
 public class HotTagCache {
-    private Map<String, Integer> tags = new HashMap<>();
+//    private Map<String, Integer> tags = new HashMap<>();
     private List<String> hots = new ArrayList<>();
 
     public void updateTags(Map<String, Integer> tags) {
-        int max = 3;
+        int max = 10;
         //构建基于java的优先队列
         PriorityQueue<HotTagDTO> priorityQueue = new PriorityQueue<>(max);
 
@@ -27,7 +27,7 @@ public class HotTagCache {
             HotTagDTO hotTagDTO = new HotTagDTO();
             hotTagDTO.setName(name);
             hotTagDTO.setPriority(priority);
-            if (priorityQueue.size() < 3) {  //当<3的时候，直接往里面放
+            if (priorityQueue.size() < max) {  //当<max的时候，直接往里面放
                 priorityQueue.add(hotTagDTO);
             } else { //拿到最小的元素出来比较,如果我我比他大的时候，再往里面放
                 HotTagDTO minHot = priorityQueue.peek();
