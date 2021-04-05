@@ -28,7 +28,8 @@ public class HotTagTasks {
     @Autowired
     private HotTagCache hotTagCache;
 
-    @Scheduled(fixedRate = 20000)
+    @Scheduled(fixedRate = 1000 * 60 * 60 * 3)
+//    @Scheduled(fixedRate = 20000)
 //    @Scheduled(cron = "0 0 1 * * *")    //"0 0 6,19 * * *" = 6:00 AM and 7:00 PM every day.
     public void hotTagSchedule() {
         int offset = 0;
