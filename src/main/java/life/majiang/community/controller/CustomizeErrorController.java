@@ -33,7 +33,7 @@ public class CustomizeErrorController implements ErrorController {
             model.addAttribute("message", "你这个请求错了吧，要不然换个姿势？");
         }
         if (status.is5xxServerError()) {
-            model.addAttribute("message", "服务器冒烟了，要不你稍后再试试~~");
+            model.addAttribute("message", "服务器冒烟了，要不你稍后再试试~~\nfromCustomizeErrorController");
         }
         return new ModelAndView("error");
     }
