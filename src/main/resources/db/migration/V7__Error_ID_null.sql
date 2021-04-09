@@ -1,1 +1,1 @@
-alter table comment modify id bigint auto_increment primary key;
+alter table comment modify id auto_increment;
