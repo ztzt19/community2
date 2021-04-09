@@ -1,1 +1,1 @@
-ALTER TABLE COMMENT DROP COLUMN content_count;
+alter table comment drop column content_count;
