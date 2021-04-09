@@ -16,6 +16,21 @@
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <db.url>jdbc:h2:~/community;MV_STORE=false</db.url>
+                <db.user>sa</db.user>
+                <db.password>123</db.password>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -129,21 +144,21 @@
 <!--                    <password>123</password>-->
 <!--                </configuration>-->
                 <configuration>
-                    <url>jdbc:mysql://sh-cynosdbmysql-grp-fl7qcj5e.sql.tencentcdb.com:28649/community2?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false</url>
-                    <user>zt_community2</user>
-                    <password>zt@y414t</password>
+                    <url>${db.url}</url>
+                    <user>${db.user}</user>
+                    <password>${db.password}</password>
                 </configuration>
                 <dependencies>
-                    <dependency>
-                        <groupId>com.tencentcloudapi</groupId>
-                        <artifactId>scf-java-events</artifactId>
-                        <version>0.0.2</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.zaxxer</groupId>
-                        <artifactId>HikariCP</artifactId>
-                        <version>3.2.0</version>
-                    </dependency>
+<!--                    <dependency>-->
+<!--                        <groupId>com.tencentcloudapi</groupId>-->
+<!--                        <artifactId>scf-java-events</artifactId>-->
+<!--                        <version>0.0.2</version>-->
+<!--                    </dependency>-->
+<!--                    <dependency>-->
+<!--                        <groupId>com.zaxxer</groupId>-->
+<!--                        <artifactId>HikariCP</artifactId>-->
+<!--                        <version>3.2.0</version>-->
+<!--                    </dependency>-->
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
