@@ -65,6 +65,12 @@
         </dependency>
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
@@ -107,12 +113,22 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>7.5.4</version>
+<!--                <configuration>-->
+<!--                    <url>jdbc:h2:~/community;MV_STORE=false</url>-->
+<!--                    <user>sa</user>-->
+<!--                    <password>123</password>-->
+<!--                </configuration>-->
                 <configuration>
-                    <url>jdbc:h2:~/community;MV_STORE=false</url>
-                    <user>sa</user>
-                    <password>123</password>
+                    <url>jdbc:mysql://172.17.0.3:3306/community2</url>
+                    <user>zt_communiry2</user>
+                    <password>zt@y414t</password>
                 </configuration>
                 <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.23</version>
+                    </dependency>
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
