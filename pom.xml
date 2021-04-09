@@ -129,8 +129,8 @@
 <!--                    <password>123</password>-->
 <!--                </configuration>-->
                 <configuration>
-                    <url>jdbc:mysql://172.17.0.3:3306/community2</url>
-                    <user>zt_communiry2</user>
+                    <url>jdbc:mysql://sh-cynosdbmysql-grp-fl7qcj5e.sql.tencentcdb.com:28649/community2?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false</url>
+                    <user>zt_community2</user>
                     <password>zt@y414t</password>
                 </configuration>
                 <dependencies>
