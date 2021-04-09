@@ -1,1 +1,1 @@
-alter table comment modify id auto_increment;
+alter table `comment` modify id auto_increment;
