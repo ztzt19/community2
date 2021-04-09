@@ -1,6 +1,6 @@
 create table user
 (
-	id int auto_increment primary key not null,,
+	id int auto_increment primary key not null,
 	account_id varchar(100),
 	name varchar(50),
 	token char(36),
