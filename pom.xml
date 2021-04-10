@@ -138,11 +138,6 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>7.5.4</version>
-<!--                <configuration>-->
-<!--                    <url>jdbc:h2:~/community;MV_STORE=false</url>-->
-<!--                    <user>sa</user>-->
-<!--                    <password>123</password>-->
-<!--                </configuration>-->
                 <configuration>
                     <url>${db.url}</url>
                     <user>${db.user}</user>
