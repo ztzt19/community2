@@ -1,10 +1,12 @@
 package life.majiang.community.controller;
 
 import com.qcloud.cos.model.ObjectMetadata;
+import com.tencentcloudapi.tia.v20180226.models.Log;
 import life.majiang.community.dto.FileDTO;
 import life.majiang.community.exception.CustomizeErrorCode;
 import life.majiang.community.exception.CustomizeException;
 import life.majiang.community.provider.TencentCloudProvider;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -24,6 +26,7 @@ import java.util.UUID;
  * @create 2021-03-19 15:43
  */
 @Controller
+@Slf4j
 @Component  //若要给静态变量赋值，可以使用set()方法，其中需要在类上加入@Component注解--自己加的
             //SpringBoot使用@Value给静态变量注入值 --> https://blog.csdn.net/mononoke111/article/details/81088472
 public class FileController {
@@ -55,13 +58,14 @@ public class FileController {
             fileDTO.setUrl(fileName);
             return fileDTO;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("upload error",e);
+            FileDTO fileDTO = new FileDTO();
+            fileDTO.setSuccess(0);
+//        fileDTO.setUrl("C:\\Users\\zt\\Desktop\\fish.jpg");
+            fileDTO.setMessage("上传失败");
+            return fileDTO;
         }
 
-        FileDTO fileDTO = new FileDTO();
-        fileDTO.setSuccess(1);
-        fileDTO.setUrl("C:\\Users\\zt\\Desktop\\fish.jpg");
-//        fileDTO.setUrl(fileName);
-        return fileDTO;
+
     }
 }
