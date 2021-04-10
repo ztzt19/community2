@@ -132,12 +132,7 @@ public class TencentCloudProvider {
      * @return //绝对路径和相对路径都OK
      */
     public static String uploadFile(String bucketName, String key, InputStream fileStream, String generatedFileName) {
-        String[] filePaths = generatedFileName.split("\\.");
-        if (filePaths.length > 1) {
-            generatedFileName = UUID.randomUUID().toString() + "." + filePaths[filePaths.length - 1];
-        } else {
-            throw new CustomizeException(CustomizeErrorCode.FILE_UPLOAD_FAIL);
-        }
+
         //自己更改本地上传文件
         File localFile = new File(key);
         PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, key, localFile);
@@ -147,7 +142,13 @@ public class TencentCloudProvider {
 
         COSClient cosClient = getCosClient();
         ObjectMetadata metadata = new ObjectMetadata();
-        metadata.setContentLength(localFile.length());
+//        metadata.setContentLength(localFile.length());
+        try {
+            metadata.setContentLength(fileStream.available());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        metadata.setContentDisposition("inline;filename=" + generatedFileName);
         try {
             PutObjectResult putObjectResult = cosClient.putObject(bucketName,key,fileStream,metadata);
 //            PutObjectResult putObjectResult = cosClient.putObject(bucketName,generatedFileName,fileStream,metadata);
@@ -183,11 +184,11 @@ public class TencentCloudProvider {
     }
 
 
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
 //        TencentCloudProvider tencentCloudProvider = new TencentCloudProvider();
 //        tencentCloudProvider.getCosClient();
 //        tencentCloudProvider.uploadFile();
 //        getCosClient();
 //        uploadFile();
-    }
+//    }
 }

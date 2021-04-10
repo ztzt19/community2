@@ -44,15 +44,25 @@ public class FileController {
     @RequestMapping("/file/upload")
     @ResponseBody
     public FileDTO upload(HttpServletRequest request) throws IOException {
-        String key = "C:\\Users\\zt\\Desktop\\fish.jpg";
-//        String key = "cos_dir/";
+//        String key = "C:\\Users\\zt\\Desktop\\fish.jpg";
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("editormd-image-file");
+
+        String generatedFileName = file.getOriginalFilename();
+        String[] filePaths = generatedFileName.split("\\.");
+        if (filePaths.length > 1) {
+            generatedFileName = UUID.randomUUID().toString() + "." + filePaths[filePaths.length - 1];
+        } else {
+            throw new CustomizeException(CustomizeErrorCode.FILE_UPLOAD_FAIL);
+        }
+
+        String key = "cos_dir/" + generatedFileName;
+
 
         try {
             //file.getName():editormd-image-file  |  file.getOriginalFilename():c.jpg
             //key决定上传云后的名字
-            String fileName = TencentCloudProvider.uploadFile(bucketName, key, file.getInputStream(), file.getOriginalFilename());
+            String fileName = TencentCloudProvider.uploadFile(bucketName, key, file.getInputStream(), generatedFileName);
             FileDTO fileDTO = new FileDTO();
             fileDTO.setSuccess(1);
             fileDTO.setUrl(fileName);
